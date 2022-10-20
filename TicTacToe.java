@@ -7,8 +7,6 @@ public class TicTacToe {
         
             System.out.println("\nLet's play tic tac toe");
 
-            //Task 1: Create an array with three rows of '_' characters.
-            
             char[][] board = {
               {'_', '_', '_'},
               {'_', '_', '_'},
@@ -39,6 +37,23 @@ public class TicTacToe {
               } 
               */
 
+              for (int i = 0; i < 9; i++) {
+                if (i % 2 == 0) {
+                  System.out.println("Turn: X");
+                  
+
+                  // Use that return value to index the board and populate it. 
+                  
+                  int[] spot = askUser(board);
+                } else {
+                  System.out.println("Turn: O");
+                  askUser(board);
+                  printBoard(board);
+                }
+              }
+
+              
+
             scan.close();
         }
     public static void printBoard(char[][] board) {
@@ -64,6 +79,21 @@ public class TicTacToe {
      *   3. Return the row and column in an int[] array.
      * 
      */
+
+     public static int[] askUser(char[][] board) {
+      System.out.print("- pick a row and column number: ");
+      int row = scan.nextInt();
+      int column = scan.nextInt();
+
+      while (board[row][column] != '_') {
+        System.out.println("Take, try again");
+
+        row = scan.nextInt();
+        column = scan.nextInt();
+      }
+      int[] spot = {row, column};
+      return spot;
+     }
 
     /** Task 6 - Write a function that determines the winner
      * Function name - checkWin 
