@@ -39,11 +39,7 @@ public class TicTacToe {
                   System.out.println("O wins!!");
                   break;
                 }
-
               }
-
-
-
             scan.close();
         }
     public static void printBoard(char[][] board) {
@@ -57,19 +53,6 @@ public class TicTacToe {
       } 
     }
      
-
-   /** Task 4 - Write a function that lets the user choose a spot
-     * Function name – askUser
-     * @param board (char[][] board)
-     * @return spot (int[])
-     * 
-     * Inside the function
-     *   1. Asks the user: - pick a row and column number: 
-     *   2. Check if the spot is taken. If so, let the user choose again.
-     *   3. Return the row and column in an int[] array.
-     * 
-     */
-
      public static int[] askUser(char[][] board) {
       System.out.print("- pick a row and column number: ");
       int row = scan.nextInt();
@@ -82,7 +65,6 @@ public class TicTacToe {
       }
       return new int[] {row, column};
      }
-
 
      // win scenario:
       // every row (part 1)
@@ -161,12 +143,14 @@ public class TicTacToe {
         } else {
           count = 0; // reset to 0
         }
-        return count;
+        
 
         /************************************************************************** */
 
         //part 4: right diagonal
-        
+
+
+        return count;
       }
 
 }
