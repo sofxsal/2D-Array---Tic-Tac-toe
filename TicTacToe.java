@@ -83,29 +83,20 @@ public class TicTacToe {
       return new int[] {row, column};
      }
 
-    /** Task 6 - Write a function that determines the winner
-     * Function name - checkWin 
-     * @param board (char[][])
-     * @return count (int)
-     * 
-     * Inside the function:
-     *   1. Make a count variable that starts at 0.
-     *   2. Check every row for a straight X or straight O (Task 7).
-     *   3. Check every column for a straight X or straight O (Task 8).
-     *   4. Check the left diagonal for a straight X or straight O (Task 9).
-     *   5. Check the right diagonal for a straight X or straight O (Task 10).
-     */
 
      // win scenario:
       // every row (part 1)
       // every column (part 2)
-      //every left diagonal
+      //every left diagonal (part 3)
       //every right diagonal
 
       public static int checkWin(char[][] board) {
         int count = 0;
         
+        /*************************************************************************** */
+
         //Part 1: going through every row and every element in each row
+
         for (int i = 0; i < board.length; i++) {
           for (int j = 0; j <board[i].length; j++) {
             if (board[i][j] == 'X') {
@@ -121,6 +112,7 @@ public class TicTacToe {
             count = 0; // reset to 0
           }
         }
+        /**************************************************************************** */
 
         //Part 2: going through every column
         //00, 10, 20
@@ -137,18 +129,43 @@ public class TicTacToe {
               count--;
             }
           }
-
           if (count == 3 || count == -3) {
             return count;
           } else {
             count = 0; // reset to 0
           }
-
-
         }
 
+        /****************************************************************************** */
 
+        //part 3: left diagonal
+        // 00, 11, 22
+        //using the same index
+
+        for (int i = 0; i < 3; i++) {
+
+          // i = 0, 00
+          // i = 1, 11
+          // i = 2, 22
+          // break the loop
+          // verify the condition for count == 3
+          if (board[i][i] == 'X') {
+            count++; 
+          } else if (board[i][i] == 'O') {
+            count--;
+          }
+        }
+
+        if (count == 3 || count == -3) {
+          return count;
+        } else {
+          count = 0; // reset to 0
+        }
         return count;
+
+        /************************************************************************** */
+
+        //part 4: right diagonal
         
       }
 
