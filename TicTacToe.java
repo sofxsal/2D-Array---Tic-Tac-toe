@@ -15,35 +15,12 @@ public class TicTacToe {
 
             printBoard(board);
 
-              /*
-              {  Task 3: Loop through turns.
-
-                  if (X) turn {
-                     Task 4: call askUser(). 
-                     Task 5: populate the board using askUser's return value.
-                  } else {
-                      Task 4: call askUser(). 
-                      Task 5: populate the board using askUser's return value. Then, print it.
-
-                  }
-
-                Task 6 - Call the function.
-                   if return value == 3 {
-                     print: X wins and break the loop
-                  } else if return value == -3 {
-                     print: O wins and break the loop
-                  }
-
-              } 
-              */
-
               for (int i = 0; i < 9; i++) {
                 if (i % 2 == 0) {
                   System.out.println("Turn: X");
                   
-                  // Use that return value to index the board and populate it.
-
-                  //create a new variable to store that return value from askUser method
+                  // Use that return value to index the board and populate it
+                  // create a new variable to store that return value from askUser method
                   int[] spot = askUser(board);
                   board[spot[0]][spot[1]] = 'X';
                   printBoard(board);
@@ -53,11 +30,19 @@ public class TicTacToe {
                   board[spot[0]][spot[1]] = 'O';
                   printBoard(board);
                 }
+
+                int count = checkWin(board);
+                if (count == 3) {
+                  System.out.println("X wins!!");
+                  break;
+                } else if (count == -3) {
+                  System.out.println("O wins!!");
+                  break;
+                }
+
               }
 
 
-
-              
 
             scan.close();
         }
@@ -112,9 +97,39 @@ public class TicTacToe {
      */
 
      // win scenario:
-      // every row
-      // every column
+      // every row (part 1)
+      // every column (part 2)
       //every left diagonal
-      //every right diagonal 
+      //every right diagonal
+
+      public static int checkWin(char[][] board) {
+        int count = 0;
+        
+        //Part 1: going through every row and every element in each row
+        for (int i = 0; i < board.length; i++) {
+          for (int j = 0; j <board[i].length; j++) {
+            if (board[i][j] == 'X') {
+              count++;
+            } else if (board[i][j] == 'O') {
+              count--;
+            }
+          }
+          //check the count if 3 or -3 for the every row
+          if (count == 3 || count == -3) {
+            return count;
+          } else {
+            count = 0; // reset to 0
+          }
+        }
+
+        for (int i = 0; i < 3; i++) {
+          for (int j = 0; j < board.length; j++) {
+            
+          }
+        }
+
+        return count;
+        
+      }
 
 }
