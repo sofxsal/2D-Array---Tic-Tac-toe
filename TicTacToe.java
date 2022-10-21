@@ -122,11 +122,31 @@ public class TicTacToe {
           }
         }
 
-        for (int i = 0; i < 3; i++) {
-          for (int j = 0; j < board.length; j++) {
-            
+        //Part 2: going through every column
+        //00, 10, 20
+        //01, 11, 21
+
+        for (int j = 0; j < board.length; j++) {
+          for (int i = 0; i < 3; i++) {
+            // when j = 0, i = 0
+            // when j = 0, i = 1
+            // when j = 0, i = 2
+            if (board[i][j] == 'X') {
+              count++;
+            } else if (board[i][j] == 'O') {
+              count--;
+            }
           }
+
+          if (count == 3 || count == -3) {
+            return count;
+          } else {
+            count = 0; // reset to 0
+          }
+
+
         }
+
 
         return count;
         
