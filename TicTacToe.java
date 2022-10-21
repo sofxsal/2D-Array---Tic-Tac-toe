@@ -41,16 +41,21 @@ public class TicTacToe {
                 if (i % 2 == 0) {
                   System.out.println("Turn: X");
                   
+                  // Use that return value to index the board and populate it.
 
-                  // Use that return value to index the board and populate it. 
-                  
+                  //create a new variable to store that return value from askUser method
                   int[] spot = askUser(board);
+                  board[spot[0]][spot[1]] = 'X';
+                  printBoard(board);
                 } else {
                   System.out.println("Turn: O");
-                  askUser(board);
+                  int[] spot = askUser(board);
+                  board[spot[0]][spot[1]] = 'O';
                   printBoard(board);
                 }
               }
+
+
 
               
 
@@ -85,14 +90,12 @@ public class TicTacToe {
       int row = scan.nextInt();
       int column = scan.nextInt();
 
-      while (board[row][column] != '_') {
-        System.out.println("Take, try again");
-
+      while (board[row][column] == 'X' || board[row][column] == 'O') {
+        System.out.println("Spot taken! Try again");
         row = scan.nextInt();
         column = scan.nextInt();
       }
-      int[] spot = {row, column};
-      return spot;
+      return new int[] {row, column};
      }
 
     /** Task 6 - Write a function that determines the winner
@@ -108,5 +111,10 @@ public class TicTacToe {
      *   5. Check the right diagonal for a straight X or straight O (Task 10).
      */
 
+     // win scenario:
+      // every row
+      // every column
+      //every left diagonal
+      //every right diagonal 
 
 }
