@@ -70,7 +70,7 @@ public class TicTacToe {
       // every row (part 1)
       // every column (part 2)
       //every left diagonal (part 3)
-      //every right diagonal
+      //every right diagonal (part 4)
 
       public static int checkWin(char[][] board) {
         int count = 0;
@@ -148,7 +148,27 @@ public class TicTacToe {
         /************************************************************************** */
 
         //part 4: right diagonal
+        // 02, 11, 20
+        // i = 0, j = 2
+          // 2 - [i] = 2 [2 -i]
+        // i = 1, j = 1
+          // 2 - [i] = 1 [2 -i]
+        // i = 2, j = 0
+          // 2 - [i] = 0 [2 - i]
 
+        for (int i = 0; i < 3; i++) {
+          if (board[i][2 - i] == 'X') {
+            count++;
+          } else if (board[i][2 - i] == 'O') {
+            count--;
+          }
+        }
+
+        if (count == 3 || count == -3) {
+          return count;
+        } else {
+          count = 0; // reset to 0
+        }
 
         return count;
       }
